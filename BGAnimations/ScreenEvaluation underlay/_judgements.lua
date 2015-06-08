@@ -5,8 +5,8 @@ t[#t+1] = Def.ActorFrame {
 		LoadActor("_pod") .. {
 			InitCommand=cmd(zoom,0.5);
 		};
-		LoadFont("_roboto condensed light 48px") .. {
-			InitCommand=cmd(zoom,0.4;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W1'));addy,1;);
+		LoadFont("_open sans 24px") .. {
+			InitCommand=cmd(zoomy,0.8;zoomx,0.6;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W1'));addy,1;);
 		};
 };
 
@@ -16,8 +16,8 @@ t[#t+1] = Def.ActorFrame {
 		LoadActor("_pod") .. {
 			InitCommand=cmd(zoom,0.5);
 		};
-		LoadFont("_roboto condensed light 48px") .. {
-			InitCommand=cmd(zoom,0.4;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W2'));addy,1;);
+		LoadFont("_open sans 24px") .. {
+			InitCommand=cmd(zoom,0.8;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W2'));addy,1;);
 		};
 };
 
@@ -27,8 +27,8 @@ t[#t+1] = Def.ActorFrame {
 		LoadActor("_pod") .. {
 			InitCommand=cmd(zoom,0.5);
 		};
-		LoadFont("_roboto condensed light 48px") .. {
-			InitCommand=cmd(zoom,0.4;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W3'));addy,1;);
+		LoadFont("_open sans 24px") .. {
+			InitCommand=cmd(zoom,0.8;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W3'));addy,1;);
 		};
 };
 
@@ -38,8 +38,8 @@ t[#t+1] = Def.ActorFrame {
 		LoadActor("_pod") .. {
 			InitCommand=cmd(zoom,0.5);
 		};
-		LoadFont("_roboto condensed light 48px") .. {
-			InitCommand=cmd(zoom,0.4;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W4'));addy,1;);
+		LoadFont("_open sans 24px") .. {
+			InitCommand=cmd(zoom,0.8;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W4'));addy,1;);
 		};
 };
 
@@ -49,8 +49,8 @@ t[#t+1] = Def.ActorFrame {
 		LoadActor("_pod") .. {
 			InitCommand=cmd(zoom,0.5);
 		};
-		LoadFont("_roboto condensed light 48px") .. {
-			InitCommand=cmd(zoom,0.4;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W5'));addy,1;);
+		LoadFont("_open sans 24px") .. {
+			InitCommand=cmd(zoom,0.8;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_W5'));addy,1;);
 		};
 };
 
@@ -60,8 +60,8 @@ t[#t+1] = Def.ActorFrame {
 		LoadActor("_pod") .. {
 			InitCommand=cmd(zoom,0.5);
 		};
-		LoadFont("_roboto condensed light 48px") .. {
-			InitCommand=cmd(zoom,0.4;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_Miss'));addy,1;);
+		LoadFont("_open sans 24px") .. {
+			InitCommand=cmd(zoom,0.8;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_Miss'));addy,1;);
 		};
 };
 
@@ -71,8 +71,8 @@ t[#t+1] = Def.ActorFrame {
 		LoadActor("_pod") .. {
 			InitCommand=cmd(zoom,0.5);
 		};
-		LoadFont("_roboto condensed light 48px") .. {
-			InitCommand=cmd(zoom,0.4;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_Held'));addy,1;);
+		LoadFont("_open sans 24px") .. {
+			InitCommand=cmd(zoom,0.8;diffuse,color("#FFFFFF");settext,string.upper(JudgmentLineToLocalizedString('JudgmentLine_Held'));addy,1;);
 		};
 };
 

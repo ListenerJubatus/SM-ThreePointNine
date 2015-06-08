@@ -1,5 +1,5 @@
 local t = Def.ActorFrame {};
-	
+
 t[#t+1] = LoadActor("_p1labels") .. {
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-60;);
 };
@@ -82,5 +82,6 @@ t[#t+1] = Def.ActorFrame {
 			InitCommand=cmd(visible,GAMESTATE:IsHumanPlayer(PLAYER_2);x,SCREEN_CENTER_X+220;y,SCREEN_CENTER_Y-64;vertalign,top;);
 			OffCommand=cmd(bounceend,0.3;zoomx,0);
 		}; 
-	};		
+	};
+	
 return t
