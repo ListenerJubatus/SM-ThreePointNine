@@ -11,21 +11,21 @@ GameColor = {
 		--[[ These are for 'Custom' Difficulty Ranks. It can be very  useful
 		in some cases, especially to apply new colors for stuff you
 		couldn't before. (huh? -aj) ]]
-		Beginner	= color("#E91E63"),			-- pink
-		Easy		= color("#3F51B5"),			-- blue
-		Medium		= color("#00BCD4"),			-- cyan
-		Hard		= color("#7CB342"),			-- green
-		Challenge	= color("#FB8C00"),			-- orange
-		Edit		= color("#78909C"),	-- gray
+		Beginner	= color("#92C7D3"),			-- cyan
+		Easy		= color("#F2B603"),			-- orange
+		Medium		= color("#EF4ABF"),			-- magenta
+		Hard		= color("#19B706"),			-- green
+		Challenge	= color("#115ED8"),			-- blue
+		Edit		= color("#78909C"),			-- gray
 		Couple		= color("#ed0972"),			-- hot pink
 		Routine		= color("#ff9a00"),			-- orange
 		--[[ These are for courses, so let's slap them here in case someone
 		wanted to use Difficulty in Course and Step regions. ]]
-		Difficulty_Beginner	= color("#E91E63"),		--
-		Difficulty_Easy		= color("#3F51B5"),		--
-		Difficulty_Medium	= color("#00BCD4"),		--
-		Difficulty_Hard		= color("#7CB342"),		-- 
-		Difficulty_Challenge	= color("#FB8C00"),	-- 
+		Difficulty_Beginner	= color("#92C7D3"),		--
+		Difficulty_Easy		= color("#F2B603"),		--
+		Difficulty_Medium	= color("#EF4ABF"),		--
+		Difficulty_Hard		= color("#19B706"),		-- 
+		Difficulty_Challenge	= color("#115ED8"),	-- 
 		Difficulty_Edit 	= color("#78909C"),		--
 		Difficulty_Couple	= color("#ed0972"),				-- 
 		Difficulty_Routine	= color("#ff9a00")				-- 
