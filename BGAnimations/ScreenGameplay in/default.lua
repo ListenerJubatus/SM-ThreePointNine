@@ -1,13 +1,75 @@
-local t = Def.ActorFrame {};
-
-t[#t+1] = Def.ActorFrame {
-	Def.Quad {
-		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;diffuse,color("#000000");zoomto,SCREEN_WIDTH,SCREEN_HEIGHT;);
-		OnCommand=cmd(diffusealpha,1;smooth,0.7;diffusealpha,0);
+-- Swiped from Konamix; thank you!
+-- ScreenGameplay in
+local travelDist = SCREEN_WIDTH*1.7;
+local LeftToRight = Def.ActorFrame{
+	LoadActor("_LeftToRight");
+	Def.Quad{
+		InitCommand=cmd(addx,64;diffuse,color("#000000FF");halign,0;zoomto,travelDist,32);
 	};
 };
 
-t[#t+1] = LoadActor( THEME:GetPathB("","_Stars in") )..{
+local RightToLeft = Def.ActorFrame{
+	LoadActor("_RightToLeft");
+	Def.Quad{
+		InitCommand=cmd(addx,-64;diffuse,color("#000000FF");halign,1;zoomto,travelDist,32);
+	};
 };
 
-return t
+local t = Def.ActorFrame{
+	Def.Quad{
+		InitCommand=cmd(Center;FullScreen;diffuse,color("0,0,0,1"));
+		OnCommand=cmd(linear,0.5;diffusealpha,0);
+	};
+	-- left to right
+	LeftToRight..{
+		InitCommand=cmd(x,SCREEN_LEFT-64;y,SCREEN_CENTER_Y-176);
+		OnCommand=cmd(linear,1;addx,travelDist);
+	};
+	LeftToRight..{
+		InitCommand=cmd(x,SCREEN_LEFT-128;y,SCREEN_CENTER_Y-112);
+		OnCommand=cmd(linear,1;addx,travelDist);
+	};
+	LeftToRight..{
+		InitCommand=cmd(x,SCREEN_LEFT-192;y,SCREEN_CENTER_Y-48);
+		OnCommand=cmd(linear,1;addx,travelDist);
+	};
+	LeftToRight..{
+		InitCommand=cmd(x,SCREEN_LEFT-256;y,SCREEN_CENTER_Y+16);
+		OnCommand=cmd(linear,1;addx,travelDist);
+	};
+	LeftToRight..{
+		InitCommand=cmd(x,SCREEN_LEFT-320;y,SCREEN_CENTER_Y+80);
+		OnCommand=cmd(linear,1;addx,travelDist);
+	};
+	LeftToRight..{
+		InitCommand=cmd(x,SCREEN_LEFT-384;y,SCREEN_CENTER_Y+144);
+		OnCommand=cmd(linear,1;addx,travelDist);
+	};
+	-- right to left
+	RightToLeft..{
+		InitCommand=cmd(x,SCREEN_RIGHT+64;y,SCREEN_CENTER_Y-144);
+		OnCommand=cmd(linear,1;addx,-travelDist);
+	};
+	RightToLeft..{
+		InitCommand=cmd(x,SCREEN_RIGHT+128;y,SCREEN_CENTER_Y-80);
+		OnCommand=cmd(linear,1;addx,-travelDist);
+	};
+	RightToLeft..{
+		InitCommand=cmd(x,SCREEN_RIGHT+192;y,SCREEN_CENTER_Y-16);
+		OnCommand=cmd(linear,1;addx,-travelDist);
+	};
+	RightToLeft..{
+		InitCommand=cmd(x,SCREEN_RIGHT+256;y,SCREEN_CENTER_Y+48);
+		OnCommand=cmd(linear,1;addx,-travelDist);
+	};
+	RightToLeft..{
+		InitCommand=cmd(x,SCREEN_RIGHT+320;y,SCREEN_CENTER_Y+112);
+		OnCommand=cmd(linear,1;addx,-travelDist);
+	};
+	RightToLeft..{
+		InitCommand=cmd(x,SCREEN_RIGHT+384;y,SCREEN_CENTER_Y+176);
+		OnCommand=cmd(linear,1;addx,-travelDist);
+	};
+};
+
+return t;

@@ -1,31 +1,29 @@
 local t = Def.ActorFrame {};
 -- Could your 3.9 do THIS?
-t[#t+1] = Def.ActorFrame {
-	LoadActor("_middle") .. {
-		InitCommand=cmd(y,SCREEN_TOP+30;x,SCREEN_RIGHT-140;);
-		OnCommand=function(self)self:horizalign(right):zoomx(0):bouncebegin(0.3):zoomx(1.02):bounceend(0.3):zoomx(1)
-		end,
-		OffCommand=function(self)self:horizalign(right):zoomx(1):sleep(0.2):smooth(0.5):zoomx(0)
-		end,
-	};
-};
 
 t[#t+1] = Def.ActorFrame {
+
+Def.ActorFrame {
+	OnCommand=cmd(addx,SCREEN_WIDTH*0.6;bounceend,0.5;addx,-SCREEN_WIDTH*0.6);
+	OffCommand=cmd(bounceend,0.5;addx,SCREEN_WIDTH);
+	Def.Quad {
+		InitCommand=cmd(horizalign,left;vertalign,top;y,0;x,0;zoomto,SCREEN_WIDTH+1,58);
+		OnCommand=cmd(diffuse,color("#0073A5"););
+	};
+
+	LoadActor("_middle") .. {
+		InitCommand=cmd(y,SCREEN_TOP+30;x,SCREEN_CENTER_X-20;zoomx,1);
+	};
+
 	LoadActor("_left") .. {
 		InitCommand=cmd(x,SCREEN_CENTER_X-360;y,SCREEN_TOP+30;);
-		OnCommand=cmd(addx,550;smooth,0.3;addx,-550);
-		OffCommand=cmd(sleep,0.3;smooth,0.3;addx,550;)
 	};
-};
 
-t[#t+1] = Def.ActorFrame {
 	LoadActor("_right") .. {
 		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+30;);
 	};
-};
 
 -- Text
-t[#t+1] = Def.ActorFrame {
 LoadFont("Common normal") .. {
 	Name="HeaderText";
 	Text=Screen.String("HeaderText");
@@ -36,10 +34,8 @@ LoadFont("Common normal") .. {
 		self:settext(param.Header);
 	end;
 	};
-};	
 
 -- Subtitle
-t[#t+1] = Def.ActorFrame {
 LoadFont("Common normal") .. {
 	Name="HeaderSubText";
 	Text=Screen.String("HeaderSubText");
@@ -51,5 +47,6 @@ LoadFont("Common normal") .. {
 	end;
 	};
 };	
+};
 
 return t
