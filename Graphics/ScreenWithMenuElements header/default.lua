@@ -24,7 +24,7 @@ Def.ActorFrame {
 	};
 
 -- Text
-LoadFont("Common normal") .. {
+LoadFont("_shared1") .. {
 	Name="HeaderText";
 	Text=Screen.String("HeaderText");
 	InitCommand=cmd(x,SCREEN_CENTER_X-246;y,SCREEN_TOP+24;horizalign,left;diffuse,color("#29847D");strokecolor,color("#576829");maxwidth,300;zoomx,1.1;);
@@ -46,7 +46,7 @@ LoadFont("Common normal") .. {
 		self:settext(param.Header);
 	end;
 	};
-};	
+};
 };
 
 return t
