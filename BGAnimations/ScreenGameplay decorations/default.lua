@@ -6,8 +6,9 @@ local t = Def.ActorFrame {};
 	};
 	
 	t[#t+1] = Def.Quad {
-		InitCommand=cmd(diffuse,color("#000000");vertalign,top;x,SCREEN_CENTER_X;y,SCREEN_TOP;);
-		OnCommand=cmd(zoomto,700,45);
+		-- Lifebar underlay
+		InitCommand=cmd(diffuse,color("#000000");vertalign,top;x,SCREEN_CENTER_X;y,SCREEN_TOP;zoomto,700,45);
+		OnCommand=cmd(addy,-230;smooth,1.5;addy,230);	
 	};
 
 	t[#t+1] = LoadActor("_header") .. {
