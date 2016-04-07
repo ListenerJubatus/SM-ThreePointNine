@@ -1,4 +1,5 @@
-h1. To do
+To do
+-----------
 * Course modes
 * Get sounds implemented accurately
 * Evaluation grades
