@@ -70,7 +70,6 @@ t[#t+1] = LoadActor("_p2grade") .. {
 		
 t[#t+1] = LoadActor("_judgements") .. {
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-60;);
-		OffCommand=cmd(bounceend,0.3;zoomx,0);
 		}; 
 		
 t[#t+1] = Def.ActorFrame {

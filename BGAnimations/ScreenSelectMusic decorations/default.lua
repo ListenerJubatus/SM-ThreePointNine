@@ -75,7 +75,7 @@ t[#t+1] = LoadActor("_bannerframe") .. {
 	}
 	
 t[#t+1] = LoadActor("BPMDisplay label") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-125+20;y,SCREEN_CENTER_Y-130;draworder,140);
+	InitCommand=cmd(x,SCREEN_CENTER_X-125+20;y,SCREEN_CENTER_Y-130;);
 	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 	OnCommand=cmd(zoom,1.2;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 	}	
