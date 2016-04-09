@@ -6,10 +6,14 @@ local path = "_screenselectdifficulty icons/";
 return Def.ActorFrame {
 	InitCommand=cmd(zoom,0);
 	OnCommand=cmd(queuecommand,"In");
-	InCommand=cmd(runcommandsonleaves,cmd(diffusealpha,0;sleep,delay;linear,0.3;diffusealpha,1);sleep,delay;zoom,1;addx,-SCREEN_CENTER_X;bounceend,0.35;addx,SCREEN_CENTER_X);
-	OffCommand=cmd(stoptweening;sleep,delay;bouncebegin,0.25;addx,-SCREEN_CENTER_X;runcommandsonleaves,cmd(stoptweening;linear,0.25;diffusealpha,0));
+	InCommand=cmd(sleep,delay;zoom,1;addx,-SCREEN_CENTER_X;bounceend,0.35;addx,SCREEN_CENTER_X);
+	OffCommand=cmd(stoptweening;sleep,delay;bouncebegin,0.25;addx,-SCREEN_CENTER_X;runcommandsonleaves,cmd(stoptweening;sleep,0.35;linear,0.25;diffusealpha,0));
 	LoadActor( path .. "info hard" )..{
 		InitCommand=cmd(y,-108;vertalign,bottom);
 	};
-	LoadActor( path .. "picture hard" );
+	LoadActor( path .. "picture hard" )..{
+		InitCommand=cmd(y,-108;valign,0);
+		OnCommand=cmd(zoomy,0;sleep,1;bounceend,0.3;zoomy,1);
+		OffCommand=cmd(sleep,0.6;bouncebegin,0.3;zoomy,0);
+	};
 }
