@@ -17,10 +17,10 @@ t[#t+1] = Def.Sprite {
 			if song then
                 if song:HasBanner() then
                     self:Load(song:GetBannerPath())
-                    self:scaletoclipped(256,80)
+                    self:scaletoclipped(250,74)
                 else
                     self:Load(THEME:GetPathG("Common fallback", "banner"))
-					self:scaletoclipped(256,80)
+                    self:scaletoclipped(250,74)
                 end
 			else
 				self:diffusealpha(0)
@@ -38,10 +38,10 @@ t[#t+1] = Def.Sprite {
 			if course then
                 if course:HasBanner() then
                     self:Load(course:GetBannerPath())
-                    self:scaletoclipped(256,80)
+                    self:scaletoclipped(250,74)
                 else
                     self:Load(THEME:GetPathG("Common fallback", "banner"))
-					self:scaletoclipped(256,80)
+                    self:scaletoclipped(250,74)
                 end
 			else
 				self:diffusealpha(0)
