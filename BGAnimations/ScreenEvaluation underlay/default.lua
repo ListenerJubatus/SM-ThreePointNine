@@ -38,10 +38,10 @@ t[#t+1] = Def.Sprite {
 			if course then
                 if course:HasBanner() then
                     self:Load(course:GetBannerPath())
-                    self:scaletoclipped(250,74)
+                    self:scaleto(256,80)
                 else
                     self:Load(THEME:GetPathG("Common fallback", "banner"))
-                    self:scaletoclipped(250,74)
+                    self:scaleto(256,80)
                 end
 			else
 				self:diffusealpha(0)
