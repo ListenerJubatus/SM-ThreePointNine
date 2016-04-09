@@ -36,10 +36,40 @@ local function difficulty_icon(pn)
 	return Def.Sprite(args)
 end
 
+if not GAMESTATE:IsCourseMode() then
+	local function GenerateModIconRow(pn)
+		local MetricsName = "ModIcons" .. ToEnumShortString(pn);
+		return Def.ActorFrame {
+			InitCommand=function(self) self:name(MetricsName); ActorUtil.LoadAllCommandsAndSetXY(self,Var "LoadingScreen"); end;
+			LoadActor( THEME:GetPathG("OptionIcon","Player") )..{
+				InitCommand=cmd(pause;halign,0;x,-19);
+				BeginCommand=function(self)
+					self:setstate( pn == PLAYER_1 and 0 or 1 );
+				end;
+				OnCommand=cmd(zoomy,0;linear,0.5;zoomy,1;);
+				OffCommand=cmd(linear,0.5;zoomy,0;);
+			};
+			Def.ModIconRow {
+				InitCommand=cmd(Load,"ModIconRowSelectMusic"..ToEnumShortString(pn),pn;x,152;);
+				OnCommand=cmd(zoomy,0;linear,0.5;zoomy,1;);
+				OffCommand=cmd(linear,0.5;zoomy,0;);
+			};
+		};
+	end;
+
+	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
+		if ShowStandardDecoration("ModIcons") then
+			t[#t+1] = GenerateModIconRow(pn);
+		end
+	end;
+end;
+
+
+
 -- Banner Frame
 		
 t[#t+1] = LoadActor("_bannerframe") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,140);
+	InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,80);
 	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 	OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 	}
@@ -132,6 +162,7 @@ t[#t+1] = LoadFont("_neuropol 36px") .. {
 t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay");
 t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay");
 t[#t+1] = StandardDecorationFromFileOptional("GrooveRadar","GrooveRadar");
+t[#t+1] = StandardDecorationFromFileOptional("AvailableDifficulties", "AvailableDifficulties")
 
 t[#t+1] = StandardDecorationFromFileOptional("SongOptions","SongOptionsText") .. {
 	ShowPressStartForOptionsCommand=THEME:GetMetric(Var "LoadingScreen","SongOptionsShowCommand");
