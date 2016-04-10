@@ -75,10 +75,29 @@ t[#t+1] = LoadActor("_bannerframe") .. {
 	}
 	
 t[#t+1] = LoadActor("BPMDisplay label") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-125+20;y,SCREEN_CENTER_Y-130;draworder,140);
+	InitCommand=cmd(x,SCREEN_CENTER_X-195+20;y,SCREEN_CENTER_Y-130;draworder,140);
 	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
-	OnCommand=cmd(zoom,1.2;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
+	OnCommand=cmd(zoom,0.7;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 	}	
+	
+
+t[#t+1] = LoadFont("_impact 24px") .. { 
+        InitCommand=cmd(zoom,0.6;x,SCREEN_CENTER_X-122;y,SCREEN_CENTER_Y-131;uppercase,true;horizalign,left;maxwidth,SCREEN_WIDTH;diffuse,color("#979797");visible,not GAMESTATE:IsCourseMode();draworder,1000;shadowlength,1;);
+		OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
+		OnCommand=cmd(zoom,0.6;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
+        SortOrderChangedMessageCommand=cmd(playcommand,"Set"); 
+        ChangedLanguageDisplayMessageCommand=cmd(playcommand,"Set"); 
+        SetCommand=function(self) 
+               local sortorder = GAMESTATE:GetSortOrder(); 
+               if sortorder then
+                    self:settext(SortOrderToLocalizedString(sortorder)); 
+                    self:playcommand("Refresh");
+				else
+					self:settext("");
+					self:playcommand("Refresh");
+               end 
+        end;
+};		
 	
 -- Difficulty frames
 
@@ -157,7 +176,7 @@ t[#t+1] = LoadFont("_neuropol 36px") .. {
 				self:settext("")
 			end
           end
-};	
+};
 	
 t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay");
 t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay");
