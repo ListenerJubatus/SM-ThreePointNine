@@ -1,32 +1,21 @@
-local t = Def.ActorFrame {};
-
 local playMode = GAMESTATE:GetPlayMode()
-
-local sStage = ""
-sStage = GAMESTATE:GetCurrentStage()
-
 if playMode ~= 'PlayMode_Regular' and playMode ~= 'PlayMode_Rave' and playMode ~= 'PlayMode_Battle' then
-  sStage = playMode;
+	curStage = playMode;
 end;
+local sStage = GAMESTATE:GetCurrentStage();
+local tRemap = {
+	Stage_1st		= 1,
+	Stage_2nd		= 2,
+	Stage_3rd		= 3,
+	Stage_4th		= 4,
+	Stage_5th		= 5,
+	Stage_6th		= 6,
+};
 
-if not (GAMESTATE:IsCourseMode() or GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2()) then
-        local tRemap = {
-                Stage_Event             = 0,
-                Stage_1st               = 1,
-                Stage_2nd               = 2,
-                Stage_3rd               = 3,
-                Stage_4th               = 4,
-                Stage_5th               = 5,
-                Stage_6th               = 6,
-        };
-
-        local nSongCount = tRemap[sStage] + (GAMESTATE:GetCurrentSong():GetStageCost()-1);
-
-        if nSongCount >= PREFSMAN:GetPreference("SongsPerPlay") then
-        sStage = "Stage_Final";
-        else
-                sStage = sStage;
-        end;
+if tRemap[sStage] == PREFSMAN:GetPreference("SongsPerPlay") then
+	sStage = "Stage_Final";
+else
+	sStage = sStage;
 end;
 
 local t = Def.ActorFrame {};
@@ -38,12 +27,7 @@ t[#t+1] = Def.ActorFrame {
 	};
 };
 
-t[#t+1] = Def.ActorFrame {
-	LoadActor( THEME:GetPathG("ScreenStageInformation", "Stage " .. ToEnumShortString(sStage) ) ) .. {
-		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+120;);
-		OnCommand=cmd(diffusealpha,0;sleep,0.3;diffusealpha,1;sleep,0.2;smooth,0.6;y,SCREEN_CENTER_Y;sleep,2;smooth,0.4;diffusealpha,0;);
-	};
-};
+t[#t+1] = LoadActor("StageDisplay");
 
 t[#t+1] = Def.ActorFrame {
 	Def.Quad {

@@ -6,6 +6,7 @@ local headercolour = {
 ["Select Difficulty"] = "#ef5315",
 ["Select Music"] = "#298479",
 ["Result"] = "#1da5fb",
+["Summary Result"] = "#1da5fb",
 }
 
 local subheadercolour = {
@@ -13,6 +14,7 @@ local subheadercolour = {
 ["Select Difficulty"] = "#ef5315",
 ["Select Music"] = "#288c46",
 ["Result"] = "#1da5fb",
+["Summary Result"] = "#1da5fb",
 }
 
 local headeroffset = {
@@ -20,6 +22,7 @@ local headeroffset = {
 ["Select Difficulty"] = -28,
 ["Select Music"] = -56,
 ["Result"] = -84,
+["Summary Result"] = -84,
 }
 
 

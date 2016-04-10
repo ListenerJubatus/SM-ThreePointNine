@@ -1,3 +1,19 @@
+Branch.TitleMenu = function()
+	-- home mode is the most assumed use of sm-ssc.
+	if GAMESTATE:GetCoinMode() == "CoinMode_Home" then
+		return "ScreenTitleMenu"
+	end
+	-- arcade junk:
+	if GAMESTATE:GetCoinsNeededToJoin() > GAMESTATE:GetCoins() then
+		-- if no credits are inserted, don't show the Join screen. SM4 has
+		-- this as the initial screen, but that means we'd be stuck in a
+		-- loop with ScreenInit. No good.
+		return "ScreenTitleJoin"
+	else
+		return "ScreenTitleJoin"
+	end
+end
+
 Branch.StartGame = function()
 	if SONGMAN:GetNumSongs() == 0 and SONGMAN:GetNumAdditionalSongs() == 0 then
 		-- xxx: use titlemenu and titlejoin as needed
@@ -17,8 +33,6 @@ Branch.GameplayScreen = function()
 	return "ScreenGameplay"
 end
 
--- somewhat proper evaluation screen usage.
--- handles online, oni, nonstop/endless (shared), rave, normal
 Branch.AfterGameplay = function()
 	if IsNetSMOnline() then
 		-- even though online mode isn't supported in this theme yet
@@ -38,7 +52,6 @@ Branch.AfterGameplay = function()
 	end
 end
 
--- xxx: needs to be less broken
 Branch.AfterEvaluation = function()
 	if GAMESTATE:IsCourseMode() then
 		-- (nonstop, oni, endless eval)
@@ -102,7 +115,17 @@ Branch.AfterProfileSave = function()
 	end
 end
 
--- broken too;
+-- pick an ending screen
+Branch.Ending = function()
+	if GAMESTATE:IsEventMode() then
+		return SelectMusicOrCourse()
+	end
+
+	-- best final grade better than AA: show the credits.
+	-- otherwise, show music scroll.
+	return STATSMAN:GetBestFinalGrade() <= 'Grade_Tier03' and "ScreenCredits" or "ScreenMusicScroll"
+end
+
 Branch.AfterSaveSummary = function()
 	local getRankingName = PREFSMAN:GetPreference("GetRankingName")
 	if getRankingName == "RankingName_Off" then
