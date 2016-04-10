@@ -68,20 +68,23 @@ end;
 
 -- Banner Frame
 		
-t[#t+1] = LoadActor("_bannerframe") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,80);
-	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
-	OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
-	}
-	
-t[#t+1] = LoadActor("BPMDisplay label") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-195+20;y,SCREEN_CENTER_Y-130;draworder,140);
-	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
-	OnCommand=cmd(zoom,0.7;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
-	}	
-	
+t[#t+1] = Def.ActorFrame {
+	InitCommand=cmd(visible,not GAMESTATE:IsCourseMode(););
+	LoadActor("_bannerframe") .. {
+		InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,80);
+		OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
+		OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
+		};
 
-t[#t+1] = LoadFont("_impact 24px") .. { 
+	
+	LoadActor("BPMDisplay label") .. {
+		InitCommand=cmd(x,SCREEN_CENTER_X-195+20;y,SCREEN_CENTER_Y-130;draworder,140);
+		OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
+		OnCommand=cmd(zoom,0.7;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
+	};
+
+
+	LoadFont("_impact 24px") .. { 
         InitCommand=cmd(zoom,0.6;x,SCREEN_CENTER_X-122;y,SCREEN_CENTER_Y-131;uppercase,true;horizalign,left;maxwidth,SCREEN_WIDTH;diffuse,color("#979797");visible,not GAMESTATE:IsCourseMode();draworder,1000;shadowlength,1;);
 		OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 		OnCommand=cmd(zoom,0.6;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
@@ -97,18 +100,25 @@ t[#t+1] = LoadFont("_impact 24px") .. {
 					self:playcommand("Refresh");
                end 
         end;
-};		
+	};
+};
+
+t[#t+1] = LoadActor("_courseframe") .. {
+		InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,80;visible,GAMESTATE:IsCourseMode(););
+		OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
+		OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
+		};
 	
 -- Difficulty frames
 
 t[#t+1] = LoadActor("_dfp1") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-250;y,SCREEN_CENTER_Y+11);
+	InitCommand=cmd(x,SCREEN_CENTER_X-250;y,SCREEN_CENTER_Y+11;visible,not GAMESTATE:IsCourseMode(););
 	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 	OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 	}
 	
 t[#t+1] = LoadActor("_dfp2") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-250+180;y,SCREEN_CENTER_Y+11);
+	InitCommand=cmd(x,SCREEN_CENTER_X-250+180;y,SCREEN_CENTER_Y+11;visible,not GAMESTATE:IsCourseMode(););
 	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 	OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 	}	
@@ -182,6 +192,7 @@ t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay");
 t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay");
 t[#t+1] = StandardDecorationFromFileOptional("GrooveRadar","GrooveRadar");
 t[#t+1] = StandardDecorationFromFileOptional("AvailableDifficulties", "AvailableDifficulties")
+t[#t+1] = StandardDecorationFromFileOptional("CourseContentsList","CourseContentsList");
 
 t[#t+1] = StandardDecorationFromFileOptional("SongOptions","SongOptionsText") .. {
 	ShowPressStartForOptionsCommand=THEME:GetMetric(Var "LoadingScreen","SongOptionsShowCommand");

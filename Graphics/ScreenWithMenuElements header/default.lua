@@ -5,6 +5,7 @@ local headercolour = {
 ["Select Style"] = "#d11120",
 ["Select Difficulty"] = "#ef5315",
 ["Select Music"] = "#298479",
+["Select Course"] = "#298479",
 ["Result"] = "#1da5fb",
 ["Summary Result"] = "#1da5fb",
 }
@@ -13,6 +14,7 @@ local subheadercolour = {
 ["Select Style"] = "#d11120",
 ["Select Difficulty"] = "#ef5315",
 ["Select Music"] = "#288c46",
+["Select Course"] = "#288c46",
 ["Result"] = "#1da5fb",
 ["Summary Result"] = "#1da5fb",
 }
@@ -21,6 +23,7 @@ local headeroffset = {
 ["Select Style"] = 0,
 ["Select Difficulty"] = -28,
 ["Select Music"] = -56,
+["Select Course"] = -56,
 ["Result"] = -84,
 ["Summary Result"] = -84,
 }
