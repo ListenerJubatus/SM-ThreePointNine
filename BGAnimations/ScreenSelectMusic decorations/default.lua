@@ -193,7 +193,6 @@ t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay");
 t[#t+1] = StandardDecorationFromFileOptional("GrooveRadar","GrooveRadar");
 t[#t+1] = StandardDecorationFromFileOptional("AvailableDifficulties", "AvailableDifficulties")
 t[#t+1] = StandardDecorationFromFileOptional("CourseContentsList","CourseContentsList");
-
 t[#t+1] = StandardDecorationFromFileOptional("SongOptions","SongOptionsText") .. {
 	ShowPressStartForOptionsCommand=THEME:GetMetric(Var "LoadingScreen","SongOptionsShowCommand");
 	ShowEnteringOptionsCommand=THEME:GetMetric(Var "LoadingScreen","SongOptionsEnterCommand");
