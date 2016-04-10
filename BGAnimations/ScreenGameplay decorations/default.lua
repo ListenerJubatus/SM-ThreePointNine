@@ -1,29 +1,92 @@
+local lifeFrame = "_header"
+
+if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then lifeFrame = "_eheader" end
+
 local t = Def.ActorFrame {};
 
 	t[#t+1] = LoadActor("_headtile") .. {
-		InitCommand=cmd(vertalign,top;x,SCREEN_CENTER_X;y,SCREEN_TOP;zoom,0.75;zoomto,SCREEN_WIDTH,69);
-		OnCommand=cmd(addy,-230;smooth,1.5;addy,230);
+		InitCommand=function(self)
+			self:zoom(0.75):CenterX():zoomto(SCREEN_WIDTH,69);
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:valign(0):zoomy(-1):y(SCREEN_BOTTOM);
+			else
+				self:valign(0):y(SCREEN_TOP);
+			end;
+		end;
+		OnCommand=function(self)
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:addy(230):smooth(1.5):addy(-230);
+			else
+				self:addy(-230):smooth(1.5):addy(230);
+			end;
+		end;
 	};
 	
 	t[#t+1] = Def.Quad {
 		-- Lifebar underlay
-		InitCommand=cmd(diffuse,color("#000000");vertalign,top;x,SCREEN_CENTER_X;y,SCREEN_TOP;zoomto,700,45);
-		OnCommand=cmd(addy,-230;smooth,1.5;addy,230);	
+		InitCommand=function(self)
+			self:diffuse(color("#000000")):CenterX():zoomto(700,45);
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:valign(1):y(SCREEN_BOTTOM);
+			else
+				self:valign(0):y(SCREEN_TOP);
+			end;
+		end;
+		OnCommand=function(self)
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:addy(230):smooth(1.5):addy(-230);
+			else
+				self:addy(-230):smooth(1.5):addy(230);
+			end;
+		end;
 	};
 
-	t[#t+1] = LoadActor("_header") .. {
-		InitCommand=cmd(zoom,0.75;vertalign,top;x,SCREEN_CENTER_X;y,SCREEN_TOP;draworder,100;);
-		OnCommand=cmd(addy,-230;smooth,1.5;addy,230);
+	t[#t+1] = LoadActor(lifeFrame) .. {
+		InitCommand=function(self)
+			self:zoom(0.75):CenterX():draworder(100);
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:valign(1):y(SCREEN_BOTTOM);
+			else
+				self:valign(0):y(SCREEN_TOP);
+			end;
+		end;
+		OnCommand=function(self)
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:addy(230):smooth(1.5):addy(-230);
+			else
+				self:addy(-230):smooth(1.5):addy(230);
+			end;
+		end;
 	};
 
 	t[#t+1] = LoadActor("_tile") .. {
-		InitCommand=cmd(vertalign,bottom;x,SCREEN_CENTER_X;y,SCREEN_BOTTOM;draworder,100;zoomto,SCREEN_WIDTH,66;);
-		OnCommand=cmd(addy,230;smooth,1.5;addy,-230);
+		InitCommand=function(self)
+			self:CenterX():draworder(100):zoomto(SCREEN_WIDTH,66);
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:valign(1):zoomy(-1):y(SCREEN_TOP);
+			else
+				self:valign(1):y(SCREEN_BOTTOM);
+			end;
+		end;
+		OnCommand=function(self)
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:addy(-230):smooth(1.5):addy(230);
+			else
+				self:addy(230):smooth(1.5):addy(-230);
+			end;
+		end;
 	};
 
 	t[#t+1] = Def.ActorFrame {
 	-- P1 StageDisplay
-	InitCommand=cmd(visible,GAMESTATE:IsHumanPlayer(PLAYER_1);x,SCREEN_CENTER_X-310;y,SCREEN_CENTER_Y+163;draworder,100;);
+	InitCommand=function(self)
+		self:visible(GAMESTATE:IsHumanPlayer(PLAYER_1)):x(SCREEN_CENTER_X-310):draworder(100);
+		if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+			self:y(SCREEN_CENTER_Y-163);
+		else
+			self:y(SCREEN_CENTER_Y+163);
+		end;
+	end;
 	OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;smooth,1.5;addx,SCREEN_WIDTH*0.6;);
 	LoadActor("_diffpoda") .. { 
 			  OnCommand=cmd(playcommand,"Set";);
@@ -126,8 +189,21 @@ local t = Def.ActorFrame {};
 	};
 	
 	t[#t+1] = LoadActor("frame") .. {
-		InitCommand=cmd(vertalign,bottom;x,SCREEN_CENTER_X;y,SCREEN_BOTTOM;draworder,100;);
-		OnCommand=cmd(addy,230;smooth,1.5;addy,-230);
+		InitCommand=function(self)
+			self:CenterX():draworder(100);
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:valign(1):zoomy(-1):y(SCREEN_TOP);
+			else
+				self:valign(1):y(SCREEN_BOTTOM);
+			end;
+		end;
+		OnCommand=function(self)
+			if GAMESTATE:IsExtraStage() or GAMESTATE:IsExtraStage2() then
+				self:addy(-230):smooth(1.5):addy(230);
+			else
+				self:addy(230):smooth(1.5):addy(-230);
+			end;
+		end;
 	};
 	t[#t+1] = StandardDecorationFromFileOptional("StageDisplay","StageDisplay");
 

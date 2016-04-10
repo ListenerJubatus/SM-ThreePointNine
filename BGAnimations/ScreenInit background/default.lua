@@ -33,12 +33,12 @@ t[#t+1] = Def.ActorFrame {
 
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(x,SCREEN_CENTER_X-20;y,SCREEN_CENTER_Y-40;fov,70);
-	LoadActor("_text (dither)")..{
-		InitCommand=cmd(diffuse,color("0,0,0,0.5");x,20;y,6);
+	LoadActor("_textshadow")..{
+		InitCommand=cmd(x,20;y,6);
 		OnCommand=cmd(linear,8;addx,-40);
 	};
-	LoadActor("_arrow (dither)")..{
-		InitCommand=cmd(diffuse,color("0,0,0,0.5");x,20+225;y,6);
+	LoadActor("_arrowshadow")..{
+		InitCommand=cmd(x,20+225;y,6);
 		OnCommand=cmd(linear,8;addx,-40);
 	};
 	LoadActor("_arrow (dither)")..{
