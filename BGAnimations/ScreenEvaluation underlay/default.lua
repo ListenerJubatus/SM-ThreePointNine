@@ -10,8 +10,8 @@ t[#t+1] = LoadActor("_p2labels") .. {
 t[#t+1] = Def.Sprite {
 		name="SongJacket";
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-120;visible, not GAMESTATE:IsCourseMode();playcommand,"Set";); 
-		OnCommand=cmd(zoomy,0;bounceend,0.5;zoomy,1);
-		OffCommand=cmd(bouncebegin,0.3;zoomy,0);
+		OnCommand=cmd(addy,SCREEN_HEIGHT;sleep,0.0;decelerate,0.3;addy,-SCREEN_HEIGHT);
+		OffCommand=cmd(sleep,0.8;accelerate,0.3;addy,SCREEN_HEIGHT);
         SetCommand=function(self) 
             local song = GAMESTATE:GetCurrentSong(); 
 			if song then
@@ -31,17 +31,17 @@ t[#t+1] = Def.Sprite {
 t[#t+1] = Def.Sprite {
 		name="CourseBanner";
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-120;visible,GAMESTATE:IsCourseMode();playcommand,"Set";); 
-		OnCommand=cmd(zoomy,0;bounceend,0.5;zoomy,1);
-		OffCommand=cmd(bouncebegin,0.3;zoomy,0);
+		OnCommand=cmd(addy,SCREEN_HEIGHT;sleep,0.0;decelerate,0.3;addy,-SCREEN_HEIGHT);
+		OffCommand=cmd(sleep,0.8;accelerate,0.3;addy,SCREEN_HEIGHT);
         SetCommand=function(self) 
             local course = GAMESTATE:GetCurrentCourse(); 
 			if course then
                 if course:HasBanner() then
                     self:Load(course:GetBannerPath())
-                    self:scaleto(256,80)
+                    self:scaletoclipped(250,74)
                 else
                     self:Load(THEME:GetPathG("Common fallback", "banner"))
-                    self:scaleto(256,80)
+                    self:scaletoclipped(250,74)
                 end
 			else
 				self:diffusealpha(0)
@@ -52,34 +52,35 @@ t[#t+1] = Def.Sprite {
 
 t[#t+1] = LoadActor("_frame") .. {
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-120;); 
-		OnCommand=cmd(zoomy,0;bounceend,0.3;zoomy,1);
-		OffCommand=cmd(bounceend,0.3;zoomy,0);
+		OnCommand=cmd(addy,SCREEN_HEIGHT;sleep,0.0;decelerate,0.3;addy,-SCREEN_HEIGHT);
+		OffCommand=cmd(sleep,0.8;accelerate,0.3;addy,SCREEN_HEIGHT);
 		};
 		
 t[#t+1] = LoadActor("_p1grade") .. {
         InitCommand=cmd(player,PLAYER_1;x,SCREEN_CENTER_X-220;y,SCREEN_CENTER_Y-120;); 
-		OnCommand=cmd(zoomy,0;bounceend,0.3;zoomy,1);
-		OffCommand=cmd(bounceend,0.3;zoomy,0);
+		OnCommand=cmd(addx,-SCREEN_WIDTH;sleep,0.0;decelerate,0.3;addx,SCREEN_WIDTH);
+		OffCommand=cmd(sleep,0.8;accelerate,0.3;addx,-SCREEN_WIDTH);
 		}; 
 		
 t[#t+1] = LoadActor("_p2grade") .. {
         InitCommand=cmd(player,PLAYER_2;x,SCREEN_CENTER_X+220;y,SCREEN_CENTER_Y-120;); 
-		OnCommand=cmd(zoomy,0;bounceend,0.3;zoomy,1);
-		OffCommand=cmd(bounceend,0.3;zoomy,0);
+		OnCommand=cmd(addx,SCREEN_WIDTH;sleep,0.0;decelerate,0.3;addx,-SCREEN_WIDTH);
+		OffCommand=cmd(sleep,0.8;accelerate,0.3;addx,SCREEN_WIDTH);
 		};
 		
 t[#t+1] = LoadActor("_judgements") .. {
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-60;);
+		OffCommand=cmd(sleep,0.8;bounceend,0.3;zoomx,0);
 		}; 
 		
 t[#t+1] = Def.ActorFrame {
 		LoadActor("_p1bonus") .. {
 			InitCommand=cmd(visible,GAMESTATE:IsHumanPlayer(PLAYER_1);x,SCREEN_CENTER_X-220;y,SCREEN_CENTER_Y-64;vertalign,top;);
-			OffCommand=cmd(bounceend,0.3;zoomx,0);
+			OffCommand=cmd(sleep,0.8;bounceend,0.3;zoomx,0);
 		}; 	
 		LoadActor("_p2bonus") .. {
 			InitCommand=cmd(visible,GAMESTATE:IsHumanPlayer(PLAYER_2);x,SCREEN_CENTER_X+220;y,SCREEN_CENTER_Y-64;vertalign,top;);
-			OffCommand=cmd(bounceend,0.3;zoomx,0);
+			OffCommand=cmd(sleep,0.8;bounceend,0.3;zoomx,0);
 		}; 
 	};
 	

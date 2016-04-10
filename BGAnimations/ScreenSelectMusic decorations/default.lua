@@ -75,7 +75,7 @@ t[#t+1] = LoadActor("_bannerframe") .. {
 	}
 	
 t[#t+1] = LoadActor("BPMDisplay label") .. {
-	InitCommand=cmd(x,SCREEN_CENTER_X-125+20;y,SCREEN_CENTER_Y-130;);
+	InitCommand=cmd(x,SCREEN_CENTER_X-125+20;y,SCREEN_CENTER_Y-130;draworder,140);
 	OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 	OnCommand=cmd(zoom,1.2;draworder,1000;horizalign,left;addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 	}	
@@ -168,6 +168,13 @@ t[#t+1] = StandardDecorationFromFileOptional("SongOptions","SongOptionsText") ..
 	ShowPressStartForOptionsCommand=THEME:GetMetric(Var "LoadingScreen","SongOptionsShowCommand");
 	ShowEnteringOptionsCommand=THEME:GetMetric(Var "LoadingScreen","SongOptionsEnterCommand");
 	HidePressStartForOptionsCommand=THEME:GetMetric(Var "LoadingScreen","SongOptionsHideCommand");
+};
+
+t[#t+1] = Def.ActorFrame{
+	Def.Quad{
+		InitCommand=cmd(draworder,99;FullScreen;diffuse,color("0,0,0,1");diffusealpha,0);
+		ShowPressStartForOptionsCommand=cmd(linear,0.2;diffusealpha,1);
+	};
 };
 	
 return t;
