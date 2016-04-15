@@ -24,7 +24,7 @@ t[#t+1] = Def.ActorFrame {
 			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W2"));
 			else
-				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W12"));
+				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W2"));
 			end;
 		end;
 	};
