@@ -35,12 +35,11 @@ if ShowStandardDecoration("TryExtraStage") then
 	end
 end
 
---Don't do that. - Inorizushi
+--Let's try this again. - Inorizushi
 
---[[t[#t+1] = LoadActor("_p1labels") .. {
+t[#t+1] = LoadActor("_p1labels") .. {
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-60;);
 };
---]]
 t[#t+1] = LoadActor("_p2labels") .. {
         InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-60;);
 };
