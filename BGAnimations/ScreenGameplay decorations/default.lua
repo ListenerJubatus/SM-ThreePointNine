@@ -139,7 +139,7 @@ local t = Def.ActorFrame {};
 	t[#t+1] = Def.ActorFrame {
 	-- P2 StageDisplay
 	InitCommand=function(self)
-		self:visible(GAMESTATE:IsHumanPlayer(PLAYER_2):x(SCREEN_CENTER_X+310):draworder(100);
+		self:visible(GAMESTATE:IsHumanPlayer(PLAYER_2)):x(SCREEN_CENTER_X+310):draworder(100);
 		if GAMESTATE:IsAnExtraStage() then
 			self:y(SCREEN_CENTER_Y-163);
 		else
