@@ -64,8 +64,6 @@ if not GAMESTATE:IsCourseMode() then
 	end;
 end;
 
-
-
 -- Banner Frame
 		
 t[#t+1] = Def.ActorFrame {
@@ -103,11 +101,49 @@ t[#t+1] = Def.ActorFrame {
 	};
 };
 
+if GAMESTATE:IsCourseMode() then
 t[#t+1] = LoadActor("_courseframe") .. {
 		InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,80;visible,GAMESTATE:IsCourseMode(););
 		OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 		OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 		};
+		
+t[#t+1] = StandardDecorationFromFileOptional("SongTime","SongTime") .. {
+	SetCommand=function(self)
+		local curSelection = nil;
+		local length = 0.0;
+		if GAMESTATE:IsCourseMode() then
+			curSelection = GAMESTATE:GetCurrentCourse();
+			self:playcommand("Reset");
+			if curSelection then
+				self:settext("");
+			end;
+		else
+			curSelection = GAMESTATE:GetCurrentSong();
+			self:playcommand("Reset");
+			if curSelection then
+				length = curSelection:MusicLengthSeconds();
+				if curSelection:IsLong() then
+					self:playcommand("Long");
+				elseif curSelection:IsMarathon() then
+					self:playcommand("Marathon");
+				else
+					self:playcommand("Reset");
+				end
+			else
+				length = 0.0;
+				self:playcommand("Reset");
+			end;
+			self:settext( SecondsToMSS(length) );
+		end;
+	end;
+	CurrentSongChangedMessageCommand=cmd(playcommand,"Set");
+	CurrentCourseChangedMessageCommand=cmd(playcommand,"Set");
+	CurrentTrailP1ChangedMessageCommand=cmd(playcommand,"Set");
+	CurrentTrailP2ChangedMessageCommand=cmd(playcommand,"Set");
+};
+end;
+
 	
 -- Difficulty frames
 
