@@ -23,52 +23,52 @@ local t = Def.ActorFrame{
 	-- left to right
 	LeftToRight..{
 		InitCommand=cmd(x,SCREEN_LEFT-64;y,SCREEN_CENTER_Y-176);
-		OnCommand=cmd(linear,1;addx,travelDist);
+		OnCommand=cmd(linear,1;addx,travelDist;sleep,0.01;diffusealpha,0);
 	};
 	LeftToRight..{
 		InitCommand=cmd(x,SCREEN_LEFT-128;y,SCREEN_CENTER_Y-112);
-		OnCommand=cmd(linear,1;addx,travelDist);
+		OnCommand=cmd(linear,1;addx,travelDist;sleep,0.01;diffusealpha,0);
 	};
 	LeftToRight..{
 		InitCommand=cmd(x,SCREEN_LEFT-192;y,SCREEN_CENTER_Y-48);
-		OnCommand=cmd(linear,1;addx,travelDist);
+		OnCommand=cmd(linear,1;addx,travelDist;sleep,0.01;diffusealpha,0);
 	};
 	LeftToRight..{
 		InitCommand=cmd(x,SCREEN_LEFT-256;y,SCREEN_CENTER_Y+16);
-		OnCommand=cmd(linear,1;addx,travelDist);
+		OnCommand=cmd(linear,1;addx,travelDist;sleep,0.01;diffusealpha,0);
 	};
 	LeftToRight..{
 		InitCommand=cmd(x,SCREEN_LEFT-320;y,SCREEN_CENTER_Y+80);
-		OnCommand=cmd(linear,1;addx,travelDist);
+		OnCommand=cmd(linear,1;addx,travelDist;sleep,0.01;diffusealpha,0);
 	};
 	LeftToRight..{
 		InitCommand=cmd(x,SCREEN_LEFT-384;y,SCREEN_CENTER_Y+144);
-		OnCommand=cmd(linear,1;addx,travelDist);
+		OnCommand=cmd(linear,1;addx,travelDist;sleep,0.01;diffusealpha,0);
 	};
 	-- right to left
 	RightToLeft..{
 		InitCommand=cmd(x,SCREEN_RIGHT+64;y,SCREEN_CENTER_Y-144);
-		OnCommand=cmd(linear,1;addx,-travelDist);
+		OnCommand=cmd(linear,1;addx,-travelDist;sleep,0.01;diffusealpha,0);
 	};
 	RightToLeft..{
 		InitCommand=cmd(x,SCREEN_RIGHT+128;y,SCREEN_CENTER_Y-80);
-		OnCommand=cmd(linear,1;addx,-travelDist);
+		OnCommand=cmd(linear,1;addx,-travelDist;sleep,0.01;diffusealpha,0);
 	};
 	RightToLeft..{
 		InitCommand=cmd(x,SCREEN_RIGHT+192;y,SCREEN_CENTER_Y-16);
-		OnCommand=cmd(linear,1;addx,-travelDist);
+		OnCommand=cmd(linear,1;addx,-travelDist;sleep,0.01;diffusealpha,0);
 	};
 	RightToLeft..{
 		InitCommand=cmd(x,SCREEN_RIGHT+256;y,SCREEN_CENTER_Y+48);
-		OnCommand=cmd(linear,1;addx,-travelDist);
+		OnCommand=cmd(linear,1;addx,-travelDist;sleep,0.01;diffusealpha,0);
 	};
 	RightToLeft..{
 		InitCommand=cmd(x,SCREEN_RIGHT+320;y,SCREEN_CENTER_Y+112);
-		OnCommand=cmd(linear,1;addx,-travelDist);
+		OnCommand=cmd(linear,1;addx,-travelDist;sleep,0.01;diffusealpha,0);
 	};
 	RightToLeft..{
 		InitCommand=cmd(x,SCREEN_RIGHT+384;y,SCREEN_CENTER_Y+176);
-		OnCommand=cmd(linear,1;addx,-travelDist);
+		OnCommand=cmd(linear,1;addx,-travelDist;sleep,0.01;diffusealpha,0);
 	};
 };
 
