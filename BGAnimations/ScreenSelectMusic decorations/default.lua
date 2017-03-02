@@ -69,7 +69,7 @@ end;
 t[#t+1] = Def.ActorFrame {
 	InitCommand=cmd(visible,not GAMESTATE:IsCourseMode(););
 	LoadActor("_bannerframe") .. {
-		InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,80);
+		InitCommand=cmd(x,SCREEN_CENTER_X-160;y,SCREEN_CENTER_Y-88;draworder,140);
 		OffCommand=cmd(bouncebegin,0.5;addx,-SCREEN_WIDTH*0.6);
 		OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;bounceend,0.5;addx,SCREEN_WIDTH*0.6;);
 		};

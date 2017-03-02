@@ -176,7 +176,7 @@ local t = Def.ActorFrame {};
 		end;
 	};
 	
-	t[#t+1] = LoadFont("_shared2") .. {
+	t[#t+1] = LoadFont("_neuropol 36px") .. {
 		InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_TOP+50;draworder,101;shadowlength,1;);
 		OnCommand=cmd(draworder,75;addy,-230;smooth,1.5;addy,230;);
 		CurrentSongChangedMessageCommand=cmd(playcommand,"Set");
@@ -200,12 +200,12 @@ local t = Def.ActorFrame {};
 				self:settextf("%i / %i", songsPlayed, GAMESTATE:GetCurrentCourse():GetEstimatedNumStages());
 			else
 				if GAMESTATE:IsEventMode() then
-					self:settextf("EVENT");
+					self:settextf("Event");
 				else
 					self:settextf("%s", ToEnumShortString(curStage));
 				end
 			end;
-			self:zoom(0.75);
+			self:zoom(0.5);
 			self:diffuse(StageToColor(curStage));
 			self:strokecolor(ColorDarkTone(StageToColor(curStage)));
 		end;

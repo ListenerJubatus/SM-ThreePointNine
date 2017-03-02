@@ -9,7 +9,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.1;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.8;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W1"));
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W1"));
@@ -21,7 +21,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.2;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.7;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W2"));
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W2"));
@@ -33,7 +33,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.3;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.6;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W3"));
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W3"));
@@ -45,7 +45,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.4;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.5;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 			SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W4"));
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W4"));
@@ -57,7 +57,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.5;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.4;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W5"));
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_W5"));
@@ -69,7 +69,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.6;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.3;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_Miss"));
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetTapNoteScores("TapNoteScore_Miss"));
@@ -81,7 +81,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.7;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.2;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetHoldNoteScores("HoldNoteScore_Held"));
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetHoldNoteScores("HoldNoteScore_Held"));
@@ -93,7 +93,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(zoomy,0;decelerate,0.3;zoomy,1);
 		OffCommand=cmd(zoomy,1;accelerate,0.3;zoomy,0);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):MaxCombo());
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):MaxCombo());
@@ -105,7 +105,7 @@ t[#t+1] = Def.ActorFrame {
 		OnCommand=cmd(addx,-SCREEN_WIDTH/2;sleep,0.9;decelerate,0.3;addx,SCREEN_WIDTH/2);
 		OffCommand=cmd(sleep,0.1;accelerate,0.3;addx,-SCREEN_WIDTH/2);
 		SetCommand=function(self)
-			if GAMESTATE:GetSmallestNumStagesLeftForAnyHumanPlayer() >= 1 then
+			if screen == "ScreenEvaluationSummary" then
 				self:settext(STATSMAN:GetFinalEvalStageStats():GetPlayerStageStats(PLAYER_1):GetScore());
 			else
 				self:settext(STATSMAN:GetCurStageStats():GetPlayerStageStats(PLAYER_1):GetScore());
