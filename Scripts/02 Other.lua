@@ -18,3 +18,7 @@ function TextBannerAfterSet(self,param)
 		Subtitle:y(12)
 	end
 end
+
+function IsWidescreen()
+	return SCREEN_WIDTH == 853
+end;

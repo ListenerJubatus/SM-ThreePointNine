@@ -39,24 +39,29 @@ local t = Def.ActorFrame {};
 			end;
 		end;
 	};
-
+	
+	for ip, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
+	local diff_x_position = string.find(pn, "P1") and SCREEN_CENTER_X-260 or SCREEN_CENTER_X+260;
 	t[#t+1] = Def.ActorFrame {
 	-- P1 StageDisplay
 	InitCommand=function(self)
-		self:visible(GAMESTATE:IsHumanPlayer(PLAYER_1)):x(SCREEN_CENTER_X-310):draworder(100);
+		self:visible(GAMESTATE:IsHumanPlayer(pn)):x(diff_x_position):draworder(100);
 		if GAMESTATE:IsAnExtraStage() then
 			self:y(SCREEN_CENTER_Y-163);
 		else
 			self:y(SCREEN_CENTER_Y+163);
 		end;
 	end;
-	OnCommand=cmd(addx,-SCREEN_WIDTH*0.6;smooth,1.5;addx,SCREEN_WIDTH*0.6;);
+	OnCommand=function(self)
+		self:addx( string.find(pn, "P1") and -SCREEN_WIDTH*0.6 or -SCREEN_WIDTH*0.6)
+		self:smooth(1.5):addx( string.find(pn, "P1") and SCREEN_WIDTH*0.6 or -SCREEN_WIDTH*0.6)
+	end;
 	LoadActor("_diffpoda") .. { 
 			  OnCommand=cmd(playcommand,"Set";);
 			  CurrentStepsP1ChangedMessageCommand=cmd(playcommand,"Set";); 
 			  PlayerJoinedMessageCommand=cmd(playcommand,"Set";diffusealpha,0;smooth,0.3;diffusealpha,1;);
 			  SetCommand=function(self)
-				stepsP1 = GAMESTATE:GetCurrentSteps(PLAYER_1)
+				local stepsP1 = GAMESTATE:GetCurrentSteps(pn)
 				local song = GAMESTATE:GetCurrentSong();
 				if song then 
 					if stepsP1 ~= nil then
@@ -79,7 +84,7 @@ local t = Def.ActorFrame {};
 			  PlayerJoinedMessageCommand=cmd(playcommand,"Set";diffusealpha,0;smooth,0.3;diffusealpha,1;);
 			  ChangedLanguageDisplayMessageCommand=cmd(playcommand,"Set"); 
 			  SetCommand=function(self)
-				stepsP1 = GAMESTATE:GetCurrentSteps(PLAYER_1)
+				local stepsP1 = GAMESTATE:GetCurrentSteps(PLAYER_1)
 				local song = GAMESTATE:GetCurrentSong();
 				if song then 
 					if stepsP1 ~= nil then
@@ -98,65 +103,7 @@ local t = Def.ActorFrame {};
 			  end	
 		};
 	};
-	
-	t[#t+1] = Def.ActorFrame {
-	-- P2 StageDisplay
-	InitCommand=function(self)
-		self:visible(GAMESTATE:IsHumanPlayer(PLAYER_2)):x(SCREEN_CENTER_X+310):draworder(100);
-		if GAMESTATE:IsAnExtraStage() then
-			self:y(SCREEN_CENTER_Y-163);
-		else
-			self:y(SCREEN_CENTER_Y+163);
-		end;
 	end;
-	OnCommand=cmd(addx,SCREEN_WIDTH*0.6;smooth,1.5;addx,-SCREEN_WIDTH*0.6;);
-	LoadActor("_diffpoda") .. { 
-			  OnCommand=cmd(playcommand,"Set";);
-			  CurrentStepsP1ChangedMessageCommand=cmd(playcommand,"Set";); 
-			  PlayerJoinedMessageCommand=cmd(playcommand,"Set";diffusealpha,0;smooth,0.3;diffusealpha,1;);
-			  SetCommand=function(self)
-				stepsP1 = GAMESTATE:GetCurrentSteps(PLAYER_2)
-				local song = GAMESTATE:GetCurrentSong();
-				if song then 
-					if stepsP1 ~= nil then
-					local st = stepsP1:GetStepsType();
-					local diff = stepsP1:GetDifficulty();
-					local courseType = GAMESTATE:IsCourseMode() and SongOrCourse:GetCourseType() or nil;
-					local cd = GetCustomDifficulty(st, diff, courseType);
-					self:diffuse(CustomDifficultyToColor(cd));
-					else
-						self:settext("")
-					end
-				else
-					self:settext("")
-				end
-			  end	
-		};
-	LoadFont("_impact 24px") .. { 
-			  OnCommand=cmd(uppercase,true;skewx,-0.1;zoom,0.7;playcommand,"Set";);
-			  CurrentStepsP1ChangedMessageCommand=cmd(playcommand,"Set";); 
-			  PlayerJoinedMessageCommand=cmd(playcommand,"Set";diffusealpha,0;smooth,0.3;diffusealpha,1;);
-			  ChangedLanguageDisplayMessageCommand=cmd(playcommand,"Set"); 
-			  SetCommand=function(self)
-				stepsP1 = GAMESTATE:GetCurrentSteps(PLAYER_2)
-				local song = GAMESTATE:GetCurrentSong();
-				if song then 
-					if stepsP1 ~= nil then
-					local st = stepsP1:GetStepsType();
-					local diff = stepsP1:GetDifficulty();
-					local courseType = GAMESTATE:IsCourseMode() and SongOrCourse:GetCourseType() or nil;
-					local cd = GetCustomDifficulty(st, diff, courseType);
-					self:settext(THEME:GetString("CustomDifficulty",ToEnumShortString(diff)));
-					self:diffuse(ColorLightTone(CustomDifficultyToColor(cd)));
-					else
-						self:settext("")
-					end
-				else
-					self:settext("")
-				end
-			  end	
-		};
-	};
 	
 	t[#t+1] = LoadActor("frame") .. {
 		InitCommand=function(self)
